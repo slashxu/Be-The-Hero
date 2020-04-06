@@ -4,6 +4,8 @@ const cors = require('cors'); // Modulo de seguração
 
 const routes = require('./routes');  // importa arquivo de rotas
 
+const { errors } = require('celebrate');  // tratamento de errros
+
 const app = express();  // criando a aplicação
 
 app.use(cors());
@@ -12,7 +14,9 @@ app.use(express.json()); // converte json em objeto do javascript
 
 app.use(routes);
 
-app.listen(3333);  // Ouve a porta 3333
+app.use(errors());
+
+module.exports = app;
 
 /** 
  * Rotas e Rrecursos
